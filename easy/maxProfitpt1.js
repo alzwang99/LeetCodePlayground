@@ -20,7 +20,7 @@ Example 2:
 Input: prices = [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
- 
+
 
 Constraints:
 
@@ -51,6 +51,9 @@ const num1 = [2, 4, 1]
 console.log(maxProfit(num1));
 */
 
+//Second Attempt
+
+/*
 var maxProfit = function (prices) {
     let low = prices[0];
     let high = 0;
@@ -70,7 +73,45 @@ var maxProfit = function (prices) {
     return high - low;
 };
 
+*/
+
+
+//Third Attempt (Brute force) Didn't work due to time exceeded
+
+/*
+var maxProfit = function (prices) {
+    let profit = 0;
+
+    for (let i = 0; i < prices.length - 1; i++) {
+        for (let j = i + 1; j < prices.length; j++) {
+            if (prices[j] - prices[i] > profit) {
+                profit = prices[j] - prices[i]
+            }
+        }
+    }
+    return profit;
+}
+
+
+*/
+
+//Solution
+
+var maxProfit = function (prices) {
+    let profit = 0;
+    let i = 0;
+    let j = 1;
+    while (j < prices.length) {
+        if (prices[i] < prices[j]) {
+            let newProfit = prices[j] - prices[i]
+            profit = Math.max(newProfit, profit);
+        }
+        else i = j
+        j++;
+    }
+    return profit;
+}
+
 const num1 = [2, 4, 1]
 
 console.log(maxProfit(num1));
-
