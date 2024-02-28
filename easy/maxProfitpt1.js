@@ -115,3 +115,23 @@ var maxProfit = function (prices) {
 const num1 = [2, 4, 1]
 
 console.log(maxProfit(num1));
+
+//Using forloop
+
+var maxProfit2 = function (prices) {
+    let profit = 0;
+    let low = prices[0]
+
+    for (let i = 1; i < prices.length; i++) {
+        if (prices[i] < low) {
+            low = prices[i]
+            console.log(low)
+        } else {
+            let newProfit = prices[i] - low
+            profit = Math.max(newProfit, profit)
+        }
+    }
+    return profit;
+}
+
+console.log(maxProfit2(num1));
