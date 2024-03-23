@@ -38,7 +38,7 @@ var canConstruct = function (ransomNote, magazine) {
     const magMap = new Map();
 
     for (const char of magazine) {
-        magMap.set(char, (magMap.get(char) || 0) + 1)
+        magMap.set(char, (magMap.get(char) ?? 0) + 1)
     }
     for (const char of ransomNote) {
         console.log(magMap.get(char));
